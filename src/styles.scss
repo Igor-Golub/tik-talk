@@ -1,1 +1,47 @@
-/* You can add global styles to this file, and also import other style files */
+:root {
+  --dark-color: #000000;
+  --light-color: #FFFFFF;
+  --primary-color: #AE7AFF;
+
+  --font-xs: 12px;
+  --font-s: 14px;
+  --font-m: 16px;
+  --font-l: 18px;
+
+  --font-bold: 700;
+
+  --border-radius: 4px;
+}
+
+h1, h2, h3, h4, h5, h6 {
+  margin: 0;
+}
+
+body {
+  color: var(--light-color);
+  background-color: var(--dark-color);
+}
+
+.skill-tag {
+  padding: 4px 8px;
+  align-items: center;
+  display: inline-flex;
+  justify-content: center;
+  font-size: var(--font-s);
+  font-weight: var(--font-bold);
+  border-radius: var(--border-radius);
+  border: 1px solid var(--light-color);
+}
+
+.primary-btn {
+  padding: 10px 20px;
+  color: var(--dark-color);
+  border-radius: var(--border-radius);
+  border: 1px solid var(--light-color);
+  background-color: var(--primary-color);
+
+  &:hover {
+    opacity: .8;
+    cursor: pointer;
+  }
+}
