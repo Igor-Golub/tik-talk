@@ -1,39 +1,34 @@
-<div class="user-card">
-  <div class="user-card__avatar">
-    <img src="/assets/img/avatar.png" alt="User avatar" class="logo">
+@if (user) {
+  <div class="user-card">
+    <div class="user-card__avatar">
+      <img
+        [src]="user.avatarUrl | imageUrl"
+        alt="User avatar"
+        class="logo">
 
-    <div class="name">
-      <h6>Bob Good</h6>
+      <div class="name">
+        <h6>{{ user.firstName }} {{ user.lastName }}</h6>
 
-      <span>nikname</span>
+        <span>{{ user.username }}</span>
+      </div>
+    </div>
+
+    <div class="user-card__description">
+      <span>{{ user.description }}</span>
+    </div>
+
+    <div class="user-card__tags">
+      @for (userSkill of user.stack; track userSkill) {
+        <div class="skill-tag">
+          {{ userSkill }}
+        </div>
+      }
+    </div>
+
+    <div class="user-card__actions">
+      <button type="button" class="primary-btn">
+        Подписаться
+      </button>
     </div>
   </div>
-
-  <div class="user-card__description">
-    <span>Список навыков, который мы обсудили выше,— основа резюме, но не единственная его часть. Также можно рассказать о себе в классическом смысле — этот раздел можно добавить в сопроводительное письмо.</span>
-  </div>
-
-  <div class="user-card__tags">
-    <div class="skill-tag">
-      Angular
-    </div>
-    <div class="skill-tag">
-      React
-    </div>
-    <div class="skill-tag">
-      NPM
-    </div>
-    <div class="skill-tag">
-      Node
-    </div>
-    <div class="skill-tag">
-      Other
-    </div>
-  </div>
-
-  <div class="user-card__actions">
-    <button type="button" class="primary-btn">
-      Подписаться
-    </button>
-  </div>
-</div>
+}
