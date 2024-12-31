@@ -1,0 +1,25 @@
+:host {
+  display: grid;
+  height: 100vh;
+  align-items: center;
+  grid-template-columns: 1fr 1fr;
+
+  & > * {
+    display: flex;
+    margin: 0 auto;
+  }
+
+  & > form {
+    gap: 60px;
+    width: 100%;
+    display: flex;
+    max-width: 35rem;
+    flex-direction: column;
+
+    & .form-fields {
+      gap: 2rem;
+      display: flex;
+      flex-direction: column;
+    }
+  }
+}

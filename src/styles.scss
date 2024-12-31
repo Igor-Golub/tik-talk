@@ -9,17 +9,30 @@
   --font-l: 18px;
 
   --font-bold: 700;
+  --font-extra-bold: 700;
 
   --border-radius: 4px;
 }
 
-h1, h2, h3, h4, h5, h6 {
+* {
   margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+}
+
+h1 {
+  font-size: 48px;
+  text-align: left;
+  line-height: 56px;
+  text-decoration-skip-ink: none;
+  font-weight: var(--font-extra-bold);
+  text-underline-position: from-font;
 }
 
 body {
   color: var(--light-color);
-  background-color: var(--dark-color);
+  background: var(--dark-color);
+  background-image: url(/assets/img/bg.png);
 }
 
 .skill-tag {
@@ -35,6 +48,7 @@ body {
 }
 
 .primary-btn {
+  width: 100%;
   padding: 10px 20px;
   color: var(--dark-color);
   border-radius: var(--border-radius);
@@ -45,4 +59,23 @@ body {
     opacity: .8;
     cursor: pointer;
   }
+}
+
+.tt-label {
+  line-height: 16px;
+  font-size: var(--font-sx);
+  font-weight: var(--font-bold);
+}
+
+.tt-input {
+  width: 100%;
+  display: block;
+  margin-top: 8px;
+  line-height: 21px;
+  padding: 12px 20px;
+  font-size: var(--font-s);
+  color: var(--light-color);
+  border-radius: var(--border-radius);
+  border: 1px solid var(--light-color);
+  background-color: var(--dark-color);
 }
