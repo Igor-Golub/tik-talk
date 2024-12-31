@@ -1,0 +1,7 @@
+<div class="users-cards__container">
+  @for (user of users; track user.id) {
+    <user-card
+      [user]="user"
+    ></user-card>
+  }
+</div>

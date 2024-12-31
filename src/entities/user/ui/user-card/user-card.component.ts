@@ -1,6 +1,6 @@
 import { Component, Input } from '@angular/core';
-import { User } from '../../data/intervaces/user';
-import { ImageUrlPipe } from '../../helpers/pipes/image-url.pipe';
+import { User } from '../../api/user';
+import { ImageUrlPipe } from '../../../../app/helpers/pipes/image-url.pipe';
 
 @Component({
   selector: 'user-card',
