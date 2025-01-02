@@ -1,6 +1,7 @@
+import { tap } from 'rxjs';
 import { HttpClient } from '@angular/common/http';
 import { inject, Injectable } from '@angular/core';
-import { take, tap } from 'rxjs';
+import { CookieService } from 'ngx-cookie-service';
 
 interface LoginPayload {
   login: string;
@@ -19,11 +20,17 @@ interface LoginResponse {
 export class AuthService {
   private readonly http = inject(HttpClient);
 
+  private readonly cookieService = inject(CookieService);
+
   private accessToken: string | null = null;
 
   private refreshToken: string | null = null;
 
   get isAuth() {
+    if (!this.accessToken) {
+      this.accessToken = this.cookieService.get('accessToken');
+    }
+
     return !!this.accessToken;
   }
 
@@ -41,6 +48,9 @@ export class AuthService {
         tap((response) => {
           this.accessToken = response.access_token;
           this.refreshToken = response.refresh_token;
+
+          this.cookieService.set('accessToken', response.access_token);
+          this.cookieService.set('refreshToken', response.access_token);
         }),
       );
   }

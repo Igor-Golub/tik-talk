@@ -5,6 +5,7 @@ import {
   ReactiveFormsModule,
   Validators,
 } from '@angular/forms';
+import { Router } from '@angular/router';
 import { AuthService } from '../../shared/api/auth/auth.service';
 
 @Component({
@@ -15,6 +16,8 @@ import { AuthService } from '../../shared/api/auth/auth.service';
 })
 export class LoginComponent {
   private readonly authService = inject(AuthService);
+
+  private readonly router = inject(Router);
 
   public form = new FormGroup({
     login: new FormControl<string | null>(null, Validators.required),
@@ -30,7 +33,9 @@ export class LoginComponent {
           login: formValue.login ?? '',
           password: formValue.password ?? '',
         })
-        .subscribe((response) => {});
+        .subscribe(() => {
+          this.router.navigate(['/']);
+        });
     }
   }
 }
