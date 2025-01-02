@@ -1,6 +1,6 @@
 <form
   [formGroup]="form"
-  (ngSubmit)="onSubmit"
+  (ngSubmit)="onSubmit()"
 >
   <h1>Hi, welcome!</h1>
 
@@ -27,9 +27,8 @@
       />
     </label>
 
-    <button class="primary-btn">Sign in</button>
+    <button type="submit" class="primary-btn">Sign in</button>
   </div>
-
 </form>
 
 <img src="/assets/img/logo.svg">
