@@ -4,7 +4,7 @@ import { UsersComponent } from '../pages/users/users.component';
 import { LoginComponent } from '../pages/login/login.component';
 import { ProfileComponent } from '../pages/profile/profile.component';
 import { UsersSearchComponent } from '../pages/users-search/users-search.component';
-import { canActivateAuth } from '../shared/guards/guards.guard';
+import { canActivateAuth } from '../shared/guards/routerAccess.guard';
 
 export const routes: Routes = [
   {

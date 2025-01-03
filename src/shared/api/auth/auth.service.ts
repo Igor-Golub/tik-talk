@@ -22,7 +22,7 @@ export class AuthService {
 
   private readonly cookieService = inject(CookieService);
 
-  private accessToken: string | null = null;
+  public accessToken: string | null = null;
 
   private refreshToken: string | null = null;
 
