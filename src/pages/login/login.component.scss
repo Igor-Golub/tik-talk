@@ -20,6 +20,25 @@
       gap: 2rem;
       display: flex;
       flex-direction: column;
+
+      & .password-input {
+        position: relative;
+
+        & .password-eye-btn {
+          border: none;
+          background: none;
+          position: absolute;
+          top: 50%;
+          transform: translateY(-50%);
+          right: 12px;
+          cursor: pointer;
+          color: var(--light-color);
+        }
+
+        & .password-eye-btn.active {
+          color: var(--primary-color);
+        }
+      }
     }
   }
 }
