@@ -53,7 +53,7 @@ export class AuthService {
 
     return this.http
       .post<LoginResponse>(`${this.baseApiURL}token`, formDataBody)
-      .pipe(tap(this.saveTokens));
+      .pipe(tap(this.saveTokens.bind(this)));
   }
 
   public refresh() {
@@ -62,7 +62,7 @@ export class AuthService {
         refresh_token: this.refreshToken,
       })
       .pipe(
-        tap(this.saveTokens),
+        tap(this.saveTokens.bind(this)),
         catchError((error) => {
           this.logout();
           return throwError(error);
@@ -85,6 +85,6 @@ export class AuthService {
     this.refreshToken = response.refresh_token;
 
     this.cookieService.set(TokensKeys.Access, response.access_token);
-    this.cookieService.set(TokensKeys.Refresh, response.access_token);
+    this.cookieService.set(TokensKeys.Refresh, response.refresh_token);
   }
 }
