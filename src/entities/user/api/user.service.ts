@@ -1,8 +1,8 @@
-import { inject, Injectable } from '@angular/core';
+import { inject, Injectable, signal } from '@angular/core';
 import { HttpClient } from '@angular/common/http';
 import { User } from './user';
 import { PaginatedList } from '../../../shared/api/types';
-import { map } from 'rxjs';
+import { map, tap } from 'rxjs';
 
 @Injectable({
   providedIn: 'root',
@@ -11,6 +11,8 @@ export class UserService {
   private readonly http = inject(HttpClient);
 
   private readonly baseApiURL = 'https://icherniakov.ru/yt-course';
+
+  public myAccountData = signal<null | User>(null)
 
   public getTestUsers() {
     return this.http.get<User[]>(`${this.baseApiURL}/account/test_accounts`);
@@ -28,6 +30,8 @@ export class UserService {
   }
 
   public getMe() {
-    return this.http.get<User>(`${this.baseApiURL}/account/me`);
+    return this.http.get<User>(`${this.baseApiURL}/account/me`).pipe(
+      tap((userResponse) => this.myAccountData.set(userResponse)),
+    );
   }
 }

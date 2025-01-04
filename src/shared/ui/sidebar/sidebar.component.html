@@ -34,3 +34,17 @@
     </a>
   </button>
 </div>
+
+@if (myAccountData(); as profileData) {
+  <div class="sidebar-footer">
+    <img
+      class="profile-avatar"
+      [src]="profileData.avatarUrl | imageUrl"
+      [alt]="profileData.username"
+    />
+
+    <strong class="profile-name">
+      {{ profileData.username }}
+    </strong>
+  </div>
+}

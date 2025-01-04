@@ -4,6 +4,7 @@ import { AsyncPipe, JsonPipe, NgForOf } from '@angular/common';
 import { ImageUrlPipe } from '../../pipes/image-url.pipe';
 import { RouterLink } from '@angular/router';
 import { UserService } from '../../../entities/user/api/user.service';
+import { firstValueFrom } from 'rxjs';
 
 interface SidebarNavItem {
   label: string;
@@ -29,9 +30,15 @@ export class SidebarComponent {
 
   public subscribers$ = this.userService.getSubscribersShortList();
 
+  public myAccountData = this.userService.myAccountData
+
   public menuItemsConfig: SidebarNavItem[] = [
     { label: 'Home', icon: 'home', link: '/' },
     { label: 'Search', icon: 'search', link: '/search' },
     { label: 'Chat', icon: 'chat', link: '/chat' },
   ];
+
+  ngOnInit() {
+    firstValueFrom(this.userService.getMe())
+  }
 }
