@@ -1,6 +1,9 @@
-import { Component } from '@angular/core';
+import { Component, inject } from '@angular/core';
 import { SvgComponent } from '../svg/svg.component';
-import { NgForOf } from '@angular/common';
+import { AsyncPipe, JsonPipe, NgForOf } from '@angular/common';
+import { ImageUrlPipe } from '../../pipes/image-url.pipe';
+import { RouterLink } from '@angular/router';
+import { UserService } from '../../../entities/user/api/user.service';
 
 interface SidebarNavItem {
   label: string;
@@ -10,14 +13,25 @@ interface SidebarNavItem {
 
 @Component({
   selector: 'app-sidebar',
-  imports: [SvgComponent, NgForOf],
+  imports: [
+    SvgComponent,
+    NgForOf,
+    ImageUrlPipe,
+    RouterLink,
+    AsyncPipe,
+    JsonPipe,
+  ],
   templateUrl: './sidebar.component.html',
   styleUrl: './sidebar.component.scss',
 })
 export class SidebarComponent {
+  private readonly userService = inject(UserService);
+
+  public subscribers$ = this.userService.getSubscribersShortList();
+
   public menuItemsConfig: SidebarNavItem[] = [
     { label: 'Home', icon: 'home', link: '/' },
-    { label: 'Search', icon: 'search', link: '/' },
-    { label: 'Chat', icon: 'chat', link: '/' },
+    { label: 'Search', icon: 'search', link: '/search' },
+    { label: 'Chat', icon: 'chat', link: '/chat' },
   ];
 }

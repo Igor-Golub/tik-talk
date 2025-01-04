@@ -3,10 +3,34 @@
 <nav class="menu">
   <ul class="list">
     <li *ngFor="let menuItem of menuItemsConfig">
-      <button class="list-item">
+      <a [routerLink]="[menuItem.link]" class="list-item">
         <svg [icon]="menuItem.icon"></svg>
         <span>{{ menuItem.label }}</span>
-      </button>
+      </a>
     </li>
   </ul>
 </nav>
+
+<div class="subscribers">
+  <span>Subscribers</span>
+
+  <ul class="subscriber-cards-list">
+    @for (user of subscribers$ | async; track user.id) {
+      <img
+        class="subscriber-card-image"
+        [src]="user.avatarUrl | imageUrl"
+        [alt]="user.firstName"
+      />
+
+      <strong class="subscriber-card-name">
+        {{ user.firstName }} {{ user.lastName }}
+      </strong>
+    }
+  </ul>
+
+  <button class="all-subscribers-btn">
+    <a [routerLink]="['/subscribers']">
+      All subscribers
+    </a>
+  </button>
+</div>
