@@ -1,1 +1,3 @@
-<p>profile works!</p>
+@if(userProfile$ | async; as user) {
+  <app-user-header [user]="user"></app-user-header>
+}

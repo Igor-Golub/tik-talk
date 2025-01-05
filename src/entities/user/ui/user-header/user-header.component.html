@@ -1,0 +1,17 @@
+@if (user(); as user) {
+  @if (user.avatarUrl) {
+    <img
+      class="user-profile-avatar"
+      [src]="user.avatarUrl | imageUrl"
+      [alt]="user.username"
+    />
+  } @else {
+    <div class="profile-avatar-placeholder">{{ user.username }}</div>
+  }
+
+  <div class="user-profile-info">
+    <h4>{{ user.firstName }} {{ user.lastName }}</h4>
+
+    <span class="ty-regular">{{ user.username }}</span>
+  </div>
+}

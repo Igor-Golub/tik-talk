@@ -50,9 +50,9 @@
         </div>
       }
 
-      <strong class="profile-name">
+      <a [routerLink]="['/profile/me']" class="profile-name">
         {{ profileData.username }}
-      </strong>
+      </a>
     </div>
 
     <button type="button" class="settings-btn">
