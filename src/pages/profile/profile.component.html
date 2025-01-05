@@ -1,3 +1,11 @@
-@if(userProfile$ | async; as user) {
-  <app-user-header [user]="user"></app-user-header>
+@if (userProfile$ | async; as user) {
+  <header>
+    <app-user-header [user]="user"></app-user-header>
+  </header>
+
+  <main class="profile-page-body">
+    <app-user-wall></app-user-wall>
+
+    <app-user-subscribers></app-user-subscribers>
+  </main>
 }
