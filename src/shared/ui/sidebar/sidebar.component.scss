@@ -91,21 +91,46 @@
 .sidebar-footer {
   position: absolute;
   bottom: 20px;
+  width: calc(100% - 20px);
   display: flex;
+  justify-content: space-between;
   gap: 12px;
   align-items: center;
-  justify-content: flex-start;
 
-  & .profile-avatar {
-    height: 40px;
-    width: 40px;
+  & .profile-data {
+    display: flex;
+    align-items: center;
+    gap: 12px;
+    justify-content: flex-start;
+
+    & .profile-avatar {
+      height: 40px;
+      width: 40px;
+    }
+
+    & .profile-avatar-placeholder {
+      background: var(--primary-color);
+      width: 40px;
+      height: 40px;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      border-radius: 50%;
+    }
+
+    & .profile-name {
+      font-size: var(--font-s);
+      color: var(--primary-color);
+    }
   }
 
-  & .profile-name {
-    height: 40px;
-    width: 40px;
-    font-size: var(--font-s);
-    color: var(--primary-color);
+  & .settings-btn {
+    padding: 8px 12px;
+    border: none;
+    cursor: pointer;
+    background: var(--primary-color);
+    color: var(--light-color);
+    border-radius: var(--border-radius);
   }
 }
 

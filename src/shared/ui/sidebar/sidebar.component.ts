@@ -1,6 +1,6 @@
 import { Component, inject } from '@angular/core';
 import { SvgComponent } from '../svg/svg.component';
-import { AsyncPipe, JsonPipe, NgForOf } from '@angular/common';
+import { AsyncPipe, NgForOf } from '@angular/common';
 import { ImageUrlPipe } from '../../pipes/image-url.pipe';
 import { RouterLink } from '@angular/router';
 import { UserService } from '../../../entities/user/api/user.service';
@@ -20,7 +20,6 @@ interface SidebarNavItem {
     ImageUrlPipe,
     RouterLink,
     AsyncPipe,
-    JsonPipe,
   ],
   templateUrl: './sidebar.component.html',
   styleUrl: './sidebar.component.scss',

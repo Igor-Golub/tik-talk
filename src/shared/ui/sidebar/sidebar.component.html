@@ -37,14 +37,26 @@
 
 @if (myAccountData(); as profileData) {
   <div class="sidebar-footer">
-    <img
-      class="profile-avatar"
-      [src]="profileData.avatarUrl | imageUrl"
-      [alt]="profileData.username"
-    />
+    <div class="profile-data">
+      @if (profileData.avatarUrl) {
+        <img
+          class="profile-avatar"
+          [src]="profileData.avatarUrl | imageUrl"
+          [alt]="profileData.username"
+        />
+      } @else {
+        <div class="profile-avatar-placeholder">
+          {{ profileData.username.charAt(0).toUpperCase() }}
+        </div>
+      }
 
-    <strong class="profile-name">
-      {{ profileData.username }}
-    </strong>
+      <strong class="profile-name">
+        {{ profileData.username }}
+      </strong>
+    </div>
+
+    <button type="button" class="settings-btn">
+      Settings
+    </button>
   </div>
 }
